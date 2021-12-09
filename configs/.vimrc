@@ -85,8 +85,7 @@ set fillchars+=vert:\|
 
 " Vertical market at 120 chars
 set colorcolumn=120
-highlight ColorColumn ctermbg=0 guibg=firebrick1
-colorscheme flattened_dark
+highlight ColorColumn ctermbg=4
 
 " Shift+k to check cppman documentation
 autocmd FileType cpp set keywordprg=cppman 
