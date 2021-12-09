@@ -62,3 +62,6 @@ show_always = false
 
 [cmake]
 disabled = true
+
+[line_break]
+disabled = true
