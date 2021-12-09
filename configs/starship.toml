@@ -1,4 +1,4 @@
-# ~/.config/starship.toml
+add_newline = false
 
 [character]
 error_symbol = "[✖](bold red) "
