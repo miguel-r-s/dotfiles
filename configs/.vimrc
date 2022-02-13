@@ -89,3 +89,5 @@ highlight ColorColumn ctermbg=4
 
 " Shift+k to check cppman documentation
 autocmd FileType cpp set keywordprg=cppman 
+
+colorscheme flattened_dark
