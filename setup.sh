@@ -1,19 +1,24 @@
-OLDFILESDIR=dotfiles_backup/
+OLDFILESDIR=dotfiles_backup
+DATEMS=$(($(date +%s%N)/1000000))
+BACKUPDIR=${OLDFILESDIR}/${DATEMS}
 
-echo "Setting new dotfiles; moving previous ones to $(pwd)/${OLDFILESDIR}"
-mkdir -p ${OLDFILESDIR}
+echo "Setting new dotfiles;"
+echo "Moving previous ones to $(pwd)/${BACKUPDIR}"
+
+mkdir -p ${BACKUPDIR}
 
 move_to_backup () {
-	mv "$1" ${OLDFILESDIR};
+    [ -f "$1" ] && mv "$1" ${BACKUPDIR}
 }
 
 set_symlink    () {
-	ln -s $(pwd)/$1 $2;
+    mkdir -p $(dirname $2)
+    ln -s $(pwd)/$1 $2
 }
 
 deploy_dotfile () {
-	move_to_backup $2;
-	set_symlink $1 $2;
+    move_to_backup $2
+    set_symlink $1 $2
 }
 
 deploy_dotfile    configs/.bash_aliases   ~/.bash_aliases
@@ -22,4 +27,10 @@ deploy_dotfile    configs/.tmux.conf      ~/.tmux.conf
 deploy_dotfile    configs/starship.toml   ~/.config/starship.toml
 
 tmux source-file ~/.tmux.conf
-echo "... done!"
+
+VUNDLEDIR=~/.vim/bundle/Vundle.vim/
+if [ ! -d ${VUNDLEDIR} ]; then
+    echo "Installing Vundle"
+    git clone https://github.com/VundleVim/Vundle.vim.git ${VUNDLEDIR}
+    vim +qPluginInstall +qall
+fi

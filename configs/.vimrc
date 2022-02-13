@@ -2,7 +2,6 @@ set nocompatible
 filetype off
 
 " Mandatory Vundle stuff
-
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
@@ -19,7 +18,6 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/a.vim'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'gabesoft/vim-ags'
-Plugin 'djoshea/vim-autoread'
 call vundle#end()            " required
 
 filetype plugin indent on    " required
@@ -50,7 +48,8 @@ set listchars=tab:→\
  
 " Whitespace management
 set tabstop=4    " Each tab represents 4 spaces
-set shiftwidth=0 " Use tabstop
+set shiftwidth=4 " >> and << are 4 spaces wide
+set expandtab    " automatically replace tabs by spaces
  
 " Highlight search while typing the search words
 set hlsearch
