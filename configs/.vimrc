@@ -47,9 +47,9 @@ set list
 set listchars=tab:→\ 
  
 " Whitespace management
+set noexpandtab
 set tabstop=4    " Each tab represents 4 spaces
 set shiftwidth=4 " >> and << are 4 spaces wide
-set expandtab    " automatically replace tabs by spaces
  
 " Highlight search while typing the search words
 set hlsearch
@@ -88,5 +88,3 @@ highlight ColorColumn ctermbg=4
 
 " Shift+k to check cppman documentation
 autocmd FileType cpp set keywordprg=cppman 
-
-colorscheme flattened_dark
