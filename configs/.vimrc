@@ -18,7 +18,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/a.vim'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'gabesoft/vim-ags'
-call vundle#end()            " required
+call vundle#end()
 
 filetype plugin indent on    " required
 
@@ -56,7 +56,8 @@ set hlsearch
 
 " NERDTree
 map <silent> <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeWinPos = "right"
+let g:NERDTreeWinPos="right"
+let NERDTreeShowHidden=1
 
 let mapleader=" "
  
@@ -80,11 +81,14 @@ nnoremap <leader>l <C-w>l
 nnoremap <leader>gs :w<CR>
 imap <leader>gs <Esc>:w<CR>
 
-set fillchars+=vert:\| 
+" Character to fill the vertical separator
+set fillchars+=vert:\  
 
-" Vertical market at 120 chars
+" Vertical marker
 set colorcolumn=120
-highlight ColorColumn ctermbg=4
+
+" Gruvbox config
+set bg=light
 
 " Shift+k to check cppman documentation
 autocmd FileType cpp set keywordprg=cppman 

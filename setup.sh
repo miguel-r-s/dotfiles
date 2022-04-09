@@ -21,12 +21,17 @@ deploy_dotfile () {
     set_symlink $1 $2
 }
 
+deploy_dotfile    configs/.bashrc         ~/.bashrc
 deploy_dotfile    configs/.bash_aliases   ~/.bash_aliases
 deploy_dotfile    configs/.vimrc          ~/.vimrc
 deploy_dotfile    configs/.tmux.conf      ~/.tmux.conf
 deploy_dotfile    configs/starship.toml   ~/.config/starship.toml
 
 tmux source-file ~/.tmux.conf
+
+if ! starship --version &> /dev/null; then
+	curl -sS https://starship.rs/install.sh | sh
+fi
 
 VUNDLEDIR=~/.vim/bundle/Vundle.vim/
 if [ ! -d ${VUNDLEDIR} ]; then
