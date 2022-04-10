@@ -5,19 +5,20 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-commentary'
-Plugin 'scrooloose/nerdtree'
-Plugin 'morhetz/gruvbox'
+Plugin 'VundleVim/Vundle.vim'     " plugin manager
+Plugin 'Valloric/YouCompleteMe'   " for C++ code completion and exploration (needs to be compliled)
+Plugin 'tpope/vim-surround'       " 
+Plugin 'tpope/vim-fugitive'       " git inside vim
+Plugin 'tpope/vim-sensible'       " sensible defaults
+Plugin 'tpope/vim-commentary'     " (un)comment code
+Plugin 'scrooloose/nerdtree'      " file explorer
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-scripts/a.vim'
+Plugin 'vim-scripts/a.vim'        " jump to source/header file
 Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'gabesoft/vim-ags'
+Plugin 'gabesoft/vim-ags'         " text search
+Plugin 'mhartington/oceanic-next' " theme
+Plugin 'KeitaNakamura/neodark.vim'" theme
 call vundle#end()
 
 filetype plugin indent on    " required
@@ -34,7 +35,7 @@ set relativenumber
 set ignorecase " ignore by default
 set smartcase  " consider case if any of the search characters are caps
 
-syntax on
+syntax enable
  
 " Press jk to leave edit mode
 imap jk <Esc>
@@ -53,6 +54,16 @@ set shiftwidth=4 " >> and << are 4 spaces wide
  
 " Highlight search while typing the search words
 set hlsearch
+
+" Character to fill the vertical separator
+set fillchars+=vert:\  
+
+" Vertical marker
+set colorcolumn=120
+
+" Current line is highlighted
+set cursorline
+
 
 " NERDTree
 map <silent> <C-n> :NERDTreeToggle<CR>
@@ -81,14 +92,8 @@ nnoremap <leader>l <C-w>l
 nnoremap <leader>gs :w<CR>
 imap <leader>gs <Esc>:w<CR>
 
-" Character to fill the vertical separator
-set fillchars+=vert:\  
-
-" Vertical marker
-set colorcolumn=120
-
-" Gruvbox config
-set bg=light
-
 " Shift+k to check cppman documentation
 autocmd FileType cpp set keywordprg=cppman 
+
+" colorscheme OceanNext
+colorscheme neodark 
