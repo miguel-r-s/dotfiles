@@ -21,11 +21,12 @@ deploy_dotfile () {
     set_symlink $1 $2
 }
 
-deploy_dotfile    configs/.bashrc         ~/.bashrc
-deploy_dotfile    configs/.bash_aliases   ~/.bash_aliases
-deploy_dotfile    configs/.vimrc          ~/.vimrc
-deploy_dotfile    configs/.tmux.conf      ~/.tmux.conf
-deploy_dotfile    configs/starship.toml   ~/.config/starship.toml
+deploy_dotfile    configs/.bashrc              ~/.bashrc
+deploy_dotfile    configs/.bash_aliases        ~/.bash_aliases
+deploy_dotfile    configs/.vimrc               ~/.vimrc
+deploy_dotfile    configs/.tmux.conf           ~/.tmux.conf
+deploy_dotfile    configs/starship.toml        ~/.config/starship.toml
+deploy_dotfile    configs/.ycm_extra_conf.py   ~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py
 
 tmux source-file ~/.tmux.conf
 
