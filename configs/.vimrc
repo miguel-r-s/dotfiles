@@ -48,7 +48,7 @@ set list
 set listchars=tab:→\ 
  
 " Whitespace management
-set noexpandtab
+set expandtab
 set tabstop=4    " Each tab represents 4 spaces
 set shiftwidth=4 " >> and << are 4 spaces wide
  
@@ -63,7 +63,6 @@ set colorcolumn=120
 
 " Current line is highlighted
 set cursorline
-
 
 " NERDTree
 map <silent> <C-n> :NERDTreeToggle<CR>
