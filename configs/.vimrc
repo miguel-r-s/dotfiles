@@ -5,20 +5,18 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'     " plugin manager
-Plugin 'Valloric/YouCompleteMe'   " for C++ code completion and exploration (needs to be compliled)
-Plugin 'tpope/vim-surround'       " 
-Plugin 'tpope/vim-fugitive'       " git inside vim
-Plugin 'tpope/vim-sensible'       " sensible defaults
-Plugin 'tpope/vim-commentary'     " (un)comment code
-Plugin 'scrooloose/nerdtree'      " file explorer
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-scripts/a.vim'        " jump to source/header file
+Plugin 'VundleVim/Vundle.vim'      " plugin manager
+Plugin 'Valloric/YouCompleteMe'    " for C++ code completion and exploration (needs to be compliled)
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'        " git inside vim
+Plugin 'tpope/vim-sensible'        " sensible defaults
+Plugin 'tpope/vim-commentary'      " (un)comment code
+Plugin 'scrooloose/nerdtree'       " file explorer
+Plugin 'vim-scripts/a.vim'         " jump to source/header file
 Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'gabesoft/vim-ags'         " text search
-Plugin 'mhartington/oceanic-next' " theme
-Plugin 'KeitaNakamura/neodark.vim'" theme
+Plugin 'gabesoft/vim-ags'          " text search
+Plugin 'mhartington/oceanic-next'  " theme
+Plugin 'KeitaNakamura/neodark.vim' " theme
 call vundle#end()
 
 filetype plugin indent on    " required
@@ -40,9 +38,30 @@ syntax enable
 " Press jk to leave edit mode
 imap jk <Esc>
 
-" Make sure it always shows
-set laststatus=2
- 
+" Status line
+function! GitBranch()
+    return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+    let l:branchname = GitBranch()
+    return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
+
+set statusline=
+set statusline+=%#PmenuSel#              " color
+set statusline+=%{StatuslineGit()}
+set statusline+=%#LineNr#
+set statusline+=\ %F                     " file name
+set statusline+=%m                       " flag indicating the file was modified[+]
+set statusline+=%=                       " go to the righthands side of the statusline
+set statusline+=%#CursorColumn#
+set statusline+=\ %r                     " read-only flag
+set statusline+=\ %y                     " file extension
+set statusline+=\ %p%%                   " percentage
+set statusline+=\ %l:%c                  " line, column
+set laststatus=2                         " always display statusline
+
 " Display tabs as characters
 set list
 set listchars=tab:→\ 
@@ -65,13 +84,13 @@ set colorcolumn=120
 set cursorline
 
 " NERDTree
+let g:NERDTreeWinPos = "right"
+let g:NERDTreeShowHidden = 1
 map <silent> <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeWinPos="right"
-let NERDTreeShowHidden=1
 
-let mapleader=" "
+let g:mapleader = " "
  
-let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
 let g:ycm_use_clangd = 1
  
 nnoremap <leader>jd      :YcmCompleter GoTo<CR>
