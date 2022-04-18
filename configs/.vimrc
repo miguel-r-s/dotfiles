@@ -83,13 +83,14 @@ set colorcolumn=120
 " Current line is highlighted
 set cursorline
 
+let g:mapleader = " "
+
 " NERDTree
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeShowHidden = 1
 map <silent> <C-n> :NERDTreeToggle<CR>
 
-let g:mapleader = " "
- 
+" YouCompleteMe
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
 let g:ycm_use_clangd = 1
  
